@@ -1,4 +1,4 @@
-**BY MB Consultancy - Services Page Content**
+**BY MB Consultancy - Solutions Page Content**
 =============================================
 
 **Hero Section**
@@ -8,14 +8,14 @@
 
 **Empowering Bahrain with Next-Generation Technology Solutions**
 
-Discover our full range of cutting-edge services designed to transform your home and business. From AI-powered automation to advanced analytics, we deliver integrated solutions that enhance security, boost efficiency, and drive measurable success across all sectors in Bahrain.
+Discover our full range of cutting-edge Solutions designed to transform your home and business. From AI-powered automation to advanced analytics, we deliver integrated solutions that enhance security, boost efficiency, and drive measurable success across all sectors in Bahrain.
 
 **\[Get Free Consultation\]** **\[Request Custom Quote\]** **\[View Portfolio\]**
 
 **Our Service Philosophy**
 --------------------------
 
-At BY MB Consultancy, we don't just provide services – we deliver transformation. Our comprehensive technology solutions are designed to elevate your lifestyle and accelerate your business growth through intelligent automation, data-driven insights, and robust digital infrastructure.
+At BY MB Consultancy, we don't just provide Solutions – we deliver transformation. Our comprehensive technology solutions are designed to elevate your lifestyle and accelerate your business growth through intelligent automation, data-driven insights, and robust digital infrastructure.
 
 **Every solution is tailored to meet the unique challenges of Bahrain's climate, security requirements, and business environment.**
 
@@ -96,7 +96,7 @@ Unlock the hidden potential in your business data with our advanced analytics so
 
 **Tailored Business Intelligence for Every Industry**
 
-*   **Financial Services Analytics** - Risk assessment, customer behavior analysis, performance tracking
+*   **Financial Solutions Analytics** - Risk assessment, customer behavior analysis, performance tracking
     
 *   **Retail Intelligence** - Sales forecasting, inventory optimization, customer journey mapping
     
@@ -119,7 +119,7 @@ Unlock the hidden potential in your business data with our advanced analytics so
     
 *   **Automated Report Generation** eliminating manual data processing and reducing errors
     
-*   **Multi-Source Data Integration** combining databases, spreadsheets, cloud services, and web APIs
+*   **Multi-Source Data Integration** combining databases, spreadsheets, cloud Solutions, and web APIs
     
 *   **Mobile BI Solutions** for real-time access to critical business metrics anywhere, anytime
     
@@ -271,7 +271,7 @@ Create robust, secure, and scalable technology infrastructure that supports your
 
 *   Smart building integration for competitive advantage
     
-*   Bulk installation services with volume discounts
+*   Bulk installation Solutions with volume discounts
     
 *   Future-proof technology specifications
     
