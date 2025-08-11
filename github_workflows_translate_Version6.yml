@@ -1,0 +1,27 @@
+name: Translate Markdown Files to Arabic
+
+on:
+  workflow_dispatch: # manual trigger; change to push/pull_request for auto-run
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Translate all Markdown files to Arabic
+        uses: fabasoad/translation-action@v3.1.8
+        with:
+          source_lang: 'en'
+          target_lang: 'ar'
+          files: '**/*.md'
+          output_suffix: '.ar.md'
+
+      - name: Commit translated files
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Add Arabic translations for Markdown files"
+          git push
