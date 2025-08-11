@@ -1,7 +1,7 @@
 name: Translate Markdown Files to Arabic
 
 on:
-  workflow_dispatch: # manual trigger; change to push/pull_request for auto-run
+  workflow_dispatch:
 
 jobs:
   translate:
@@ -13,10 +13,9 @@ jobs:
       - name: Translate all Markdown files to Arabic
         uses: fabasoad/translation-action@v3.1.8
         with:
-          source_lang: 'en'
-          target_lang: 'ar'
-          files: '**/*.md'
-          output_suffix: '.ar.md'
+          source: '**/*.md'
+          provider: 'yandex'
+          lang: 'ar'
 
       - name: Commit translated files
         run: |
