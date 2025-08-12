@@ -15,7 +15,7 @@ jobs:
       with:
         target_languages: "ar"
         input_file_path: "README.md"
-        output_file_name_pattern: "README.{language}.md"
+        output_file_name_prefix: "README."
         deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
         
     - name: Translate Homepage Content
@@ -23,7 +23,7 @@ jobs:
       with:
         target_languages: "ar"
         input_file_path: "01 BY MB Consultancy - Home Page Content.md"
-        output_file_name_pattern: "translations/01 BY MB Consultancy - Home Page Content.{language}.md"
+        output_file_name_prefix: "translations/01 BY MB Consultancy - Home Page Content."
         deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
         
     - name: Translate About Us Content
@@ -31,7 +31,7 @@ jobs:
       with:
         target_languages: "ar"
         input_file_path: "02 About Us Page Content.md"
-        output_file_name_pattern: "translations/02 About Us Page Content.{language}.md"
+        output_file_name_prefix: "translations/02 About Us Page Content."
         deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
 
     - name: Translate Solution Page Content
@@ -39,7 +39,7 @@ jobs:
       with:
         target_languages: "ar"
         input_file_path: "03 Solution Page Content.md"
-        output_file_name_pattern: "translations/03 Solution Page Content.{language}.md"
+        output_file_name_prefix: "translations/03 Solution Page Content."
         deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
 
     - name: Translate Online Store Page Content
@@ -47,7 +47,7 @@ jobs:
       with:
         target_languages: "ar"
         input_file_path: "04 Online Store Page Content.md"
-        output_file_name_pattern: "translations/04 Online Store Page Content.{language}.md"
+        output_file_name_prefix: "translations/04 Online Store Page Content."
         deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
 
     - name: Translate What Makes Us Unique Page
@@ -55,7 +55,7 @@ jobs:
       with:
         target_languages: "ar"
         input_file_path: "05 What Makes Us Unique Page.md"
-        output_file_name_pattern: "translations/05 What Makes Us Unique Page.{language}.md"
+        output_file_name_prefix: "translations/05 What Makes Us Unique Page."
         deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
 
     - name: Translate Why Choose Us Page
@@ -63,7 +63,7 @@ jobs:
       with:
         target_languages: "ar"
         input_file_path: "06 Why Choose Us Page.md"
-        output_file_name_pattern: "translations/06 Why Choose Us Page.{language}.md"
+        output_file_name_prefix: "translations/06 Why Choose Us Page."
         deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
 
     - name: Translate Contact Us Page Content
@@ -71,7 +71,7 @@ jobs:
       with:
         target_languages: "ar"
         input_file_path: "07 Contact Us Page Content.md"
-        output_file_name_pattern: "translations/07 Contact Us Page Content.{language}.md"
+        output_file_name_prefix: "translations/07 Contact Us Page Content."
         deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
 
     - name: Translate Terms
@@ -79,7 +79,7 @@ jobs:
       with:
         target_languages: "ar"
         input_file_path: "08 Terms.md"
-        output_file_name_pattern: "translations/08 Terms.{language}.md"
+        output_file_name_prefix: "translations/08 Terms."
         deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
 
     - name: Translate Privacy Policies
@@ -87,7 +87,7 @@ jobs:
       with:
         target_languages: "ar"
         input_file_path: "09 Privacy Policie.md"
-        output_file_name_pattern: "translations/09 Privacy Policie.{language}.md"
+        output_file_name_prefix: "translations/09 Privacy Policie."
         deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
 
     - name: Translate Design Guidance
@@ -95,7 +95,7 @@ jobs:
       with:
         target_languages: "ar"
         input_file_path: "i. Design Guidance.md"
-        output_file_name_pattern: "translations/i. Design Guidance.{language}.md"
+        output_file_name_prefix: "translations/i. Design Guidance."
         deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
 
     - name: Translate Customer Journey Analysis
@@ -103,7 +103,7 @@ jobs:
       with:
         target_languages: "ar"
         input_file_path: "ii. Customer Journey Analysis.md"
-        output_file_name_pattern: "translations/ii. Customer Journey Analysis.{language}.md"
+        output_file_name_prefix: "translations/ii. Customer Journey Analysis."
         deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
 
     - name: Translate General Information
@@ -111,5 +111,5 @@ jobs:
       with:
         target_languages: "ar"
         input_file_path: "iii. General Information.md"
-        output_file_name_pattern: "translations/iii. General Information.{language}.md"
+        output_file_name_prefix: "translations/iii. General Information."
         deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
