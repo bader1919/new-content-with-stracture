@@ -1,0 +1,59 @@
+name: Translate all content documents
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [opened, synchronize]
+
+permissions:
+  contents: write
+
+jobs:
+  translate-all-files:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        file:
+          - name: "00 intro.md"
+            pattern: "00 intro.{language}.md"
+          - name: "01 BY MB Consultancy - Home Page Content.md"
+            pattern: "01 BY MB Consultancy - Home Page Content.{language}.md"
+          - name: "01A-Homepage -success-is-Jurney.md"
+            pattern: "01A-Homepage -success-is-Jurney.{language}.md"
+          - name: "02 About Us Page Content.md"
+            pattern: "02 About Us Page Content.{language}.md"
+          - name: "03 Solution Page Content.md"
+            pattern: "03 Solution Page Content.{language}.md"
+          - name: "04 Online Store Page Content.md"
+            pattern: "04 Online Store Page Content.{language}.md"
+          - name: "05 What Makes Us Unique Page.md"
+            pattern: "05 What Makes Us Unique Page.{language}.md"
+          - name: "06 Why Choose Us Page.md"
+            pattern: "06 Why Choose Us Page.{language}.md"
+          - name: "07 Contact Us Page Content.md"
+            pattern: "07 Contact Us Page Content.{language}.md"
+          - name: "08 Terms.md"
+            pattern: "08 Terms.{language}.md"
+          - name: "09 Privacy Policie.md"
+            pattern: "09 Privacy Policie.{language}.md"
+          - name: "i. Design Guidance.md"
+            pattern: "i. Design Guidance.{language}.md"
+          - name: "ii. Customer Journey Analysis.md"
+            pattern: "ii. Customer Journey Analysis.{language}.md"
+          - name: "iii. General Information.md"
+            pattern: "iii. General Information.{language}.md"
+      fail-fast: false
+      max-parallel: 3
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: DeepL Translate Github Action
+        uses: lyqht/deepl-translate-github-action@v2.1.0
+        with:
+          target_languages: ar
+          input_file_path: ${{ matrix.file.name }}
+          output_file_name_pattern: ${{ matrix.file.pattern }}
+          deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
