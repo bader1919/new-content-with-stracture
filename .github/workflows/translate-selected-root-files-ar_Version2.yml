@@ -19,55 +19,12 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Get all markdown files
-        id: get-files
-        run: |
-          files=$(find . -name "*.md" -type f | sed 's|^\./||' | tr '\n' ',' | sed 's/,$//')
-          echo "files=$files" >> $GITHUB_OUTPUT
-          
-      - name: Display files to translate
-        run: |
-          echo "Files to translate: ${{ steps.get-files.outputs.files }}"
-
       - name: Translate files
         uses: lyqht/deepl-translate-github-action@main
         with:
-          DEEPL_API_KEY: ${{ secrets.DEEPL_API_KEY }}
-          INPUT_FILE_PATH: ${{ steps.get-files.outputs.files }}
-          OUTPUT_FILE_NAME_PATTERN: '{name}.ar.{ext}'
-          TARGET_LANGUAGES: 'ar'
+          target_languages: ar
+          input_file_path: docs/simple/original.md
+          output_file_name_pattern: docs/simple/{language}.md
+          deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
 
-      - name: Check for changes
-        id: check-changes
-        run: |
-          if [ -n "$(git status --porcelain)" ]; then
-            echo "changes=true" >> $GITHUB_OUTPUT
-          else
-            echo "changes=false" >> $GITHUB_OUTPUT
-          fi
 
-      - name: Create Pull Request
-        if: steps.check-changes.outputs.changes == 'true'
-        uses: peter-evans/create-pull-request@v6
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: translations/arabic-${{ github.run_number }}
-          title: "Add Arabic translations"
-          commit-message: "feat: add Arabic translations for markdown files"
-          body: |
-            ## Arabic Translations
-            
-            This PR adds Arabic translations generated using DeepL API for ALL markdown files.
-            
-            ### Files Translated
-            - Generated from workflow run #${{ github.run_number }}
-            - Translates all .md files in the entire repository
-            
-            ### Notes
-            - All translations are generated automatically using DeepL
-            - Please review the translations before merging
-            
-            ---
-            *This PR was created automatically by GitHub Actions*
-          labels: translation,arabic,automated
-          reviewers: bader1919
