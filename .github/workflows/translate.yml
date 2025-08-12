@@ -8,98 +8,98 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
       
-    # Create translations directory if it doesn't exist
-    - name: Create translations directory
-      run: mkdir -p translations
+      # Create translations directory if it doesn't exist
+      - name: Create translations directory
+        run: mkdir -p translations
+        
+      # Skip README.md translation as it's repository documentation
+      # Start with smaller files to test API limits
       
-    # Skip README.md translation as it's repository documentation
-    # Start with smaller files to test API limits
-    
-    - name: Translate Intro Content
-      uses: lyqht/deepl-translate-github-action@v2
-      with:
-        target_languages: "ar"
-        input_file_path: "00 intro.md"
-        output_file_name_prefix: "translations/00 intro."
-        deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
+      - name: Translate Intro Content
+        uses: lyqht/deepl-translate-github-action@v2
+        with:
+          target_languages: "ar"
+          input_file_path: "00 intro.md"
+          output_file_name_prefix: "translations/00 intro."
+          deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
         
-    - name: Translate Terms
-      uses: lyqht/deepl-translate-github-action@v2
-      with:
-        target_languages: "ar"
-        input_file_path: "08 Terms.md"
-        output_file_name_prefix: "translations/08 Terms."
-        deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
+      - name: Translate Terms
+        uses: lyqht/deepl-translate-github-action@v2
+        with:
+          target_languages: "ar"
+          input_file_path: "08 Terms.md"
+          output_file_name_prefix: "translations/08 Terms."
+          deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
         
-    - name: Translate Homepage Success Journey
-      uses: lyqht/deepl-translate-github-action@v2
-      with:
-        target_languages: "ar"
-        input_file_path: "01A-Homepage -success-is-Jurney.md"
-        output_file_name_prefix: "translations/01A-Homepage -success-is-Jurney."
-        deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
+      - name: Translate Homepage Success Journey
+        uses: lyqht/deepl-translate-github-action@v2
+        with:
+          target_languages: "ar"
+          input_file_path: "01A-Homepage -success-is-Jurney.md"
+          output_file_name_prefix: "translations/01A-Homepage -success-is-Jurney."
+          deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
         
-    - name: Translate Homepage Content
-      uses: lyqht/deepl-translate-github-action@v2
-      with:
-        target_languages: "ar"
-        input_file_path: "01 BY MB Consultancy - Home Page Content.md"
-        output_file_name_prefix: "translations/01 BY MB Consultancy - Home Page Content."
-        deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
+      - name: Translate Homepage Content
+        uses: lyqht/deepl-translate-github-action@v2
+        with:
+          target_languages: "ar"
+          input_file_path: "01 BY MB Consultancy - Home Page Content.md"
+          output_file_name_prefix: "translations/01 BY MB Consultancy - Home Page Content."
+          deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
         
-    - name: Translate Design Guidance
-      uses: lyqht/deepl-translate-github-action@v2
-      with:
-        target_languages: "ar"
-        input_file_path: "i. Design Guidance.md"
-        output_file_name_prefix: "translations/i. Design Guidance."
-        deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
+      - name: Translate Design Guidance
+        uses: lyqht/deepl-translate-github-action@v2
+        with:
+          target_languages: "ar"
+          input_file_path: "i. Design Guidance.md"
+          output_file_name_prefix: "translations/i. Design Guidance."
+          deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
         
-    - name: Translate About Us Content
-      uses: lyqht/deepl-translate-github-action@v2
-      with:
-        target_languages: "ar"
-        input_file_path: "02 About Us Page Content.md"
-        output_file_name_prefix: "translations/02 About Us Page Content."
-        deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
+      - name: Translate About Us Content
+        uses: lyqht/deepl-translate-github-action@v2
+        with:
+          target_languages: "ar"
+          input_file_path: "02 About Us Page Content.md"
+          output_file_name_prefix: "translations/02 About Us Page Content."
+          deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
 
-    - name: Translate Solution Page Content
-      uses: lyqht/deepl-translate-github-action@v2
-      with:
-        target_languages: "ar"
-        input_file_path: "03 Solution Page Content.md"
-        output_file_name_prefix: "translations/03 Solution Page Content."
-        deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
+      - name: Translate Solution Page Content
+        uses: lyqht/deepl-translate-github-action@v2
+        with:
+          target_languages: "ar"
+          input_file_path: "03 Solution Page Content.md"
+          output_file_name_prefix: "translations/03 Solution Page Content."
+          deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
 
-    - name: Translate Contact Us Page Content
-      uses: lyqht/deepl-translate-github-action@v2
-      with:
-        target_languages: "ar"
-        input_file_path: "07 Contact Us Page Content.md"
-        output_file_name_prefix: "translations/07 Contact Us Page Content."
-        deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
+      - name: Translate Contact Us Page Content
+        uses: lyqht/deepl-translate-github-action@v2
+        with:
+          target_languages: "ar"
+          input_file_path: "07 Contact Us Page Content.md"
+          output_file_name_prefix: "translations/07 Contact Us Page Content."
+          deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
 
-    - name: Translate Why Choose Us Page
-      uses: lyqht/deepl-translate-github-action@v2
-      with:
-        target_languages: "ar"
-        input_file_path: "06 Why Choose Us Page.md"
-        output_file_name_prefix: "translations/06 Why Choose Us Page."
-        deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
+      - name: Translate Why Choose Us Page
+        uses: lyqht/deepl-translate-github-action@v2
+        with:
+          target_languages: "ar"
+          input_file_path: "06 Why Choose Us Page.md"
+          output_file_name_prefix: "translations/06 Why Choose Us Page."
+          deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
 
-    # Note: The following files are temporarily commented out due to payload size limits
-    # They may need to be split into smaller chunks or processed separately
-    #
-    # - name: Translate General Information (21KB - may be too large)
-    # - name: Translate What Makes Us Unique Page (22KB - may be too large)  
-    # - name: Translate Online Store Page Content (22KB - may be too large)
-    # - name: Translate Customer Journey Analysis (22KB - may be too large)
-    # - name: Translate Privacy Policies (29KB - likely too large)
-    
-    - name: Commit translations
-      uses: stefanzweifel/git-auto-commit-action@v4
-      with:
-        commit_message: 'Add Arabic translations for content files'
-        file_pattern: 'translations/*.ar.md'
+      # Note: The following files are temporarily commented out due to payload size limits
+      # They may need to be split into smaller chunks or processed separately
+      #
+      # - name: Translate General Information (21KB - may be too large)
+      # - name: Translate What Makes Us Unique Page (22KB - may be too large)  
+      # - name: Translate Online Store Page Content (22KB - may be too large)
+      # - name: Translate Customer Journey Analysis (22KB - may be too large)
+      # - name: Translate Privacy Policies (29KB - likely too large)
+      
+      - name: Commit translations
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'Add Arabic translations for content files'
+          file_pattern: 'translations/*.ar.md'
