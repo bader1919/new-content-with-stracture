@@ -2,14 +2,9 @@ name: Translate Files to Arabic
 
 on:
   workflow_dispatch:
-    inputs:
-      files_to_translate:
-        description: 'Comma-separated list of files to translate (leave empty to translate all root .md files)'
-        required: false
-        type: string
   push:
     paths:
-      - "*.md"
+      - "**/*.md"
 
 jobs:
   translate:
@@ -24,17 +19,11 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Get list of files to translate
+      - name: Get all markdown files
         id: get-files
         run: |
-          if [ -n "${{ github.event.inputs.files_to_translate }}" ]; then
-            # Use manually specified files
-            echo "files=${{ github.event.inputs.files_to_translate }}" >> $GITHUB_OUTPUT
-          else
-            # Get all .md files in root directory
-            files=$(find . -maxdepth 1 -name "*.md" -type f | sed 's|^\./||' | tr '\n' ',' | sed 's/,$//')
-            echo "files=$files" >> $GITHUB_OUTPUT
-          fi
+          files=$(find . -name "*.md" -type f | sed 's|^\./||' | tr '\n' ',' | sed 's/,$//')
+          echo "files=$files" >> $GITHUB_OUTPUT
           
       - name: Display files to translate
         run: |
@@ -63,15 +52,16 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: translations/arabic-${{ github.run_number }}
-          title: "🌍 Add Arabic translations"
+          title: "Add Arabic translations"
           commit-message: "feat: add Arabic translations for markdown files"
           body: |
             ## Arabic Translations
             
-            This PR adds Arabic translations generated using DeepL API.
+            This PR adds Arabic translations generated using DeepL API for ALL markdown files.
             
             ### Files Translated
             - Generated from workflow run #${{ github.run_number }}
+            - Translates all .md files in the entire repository
             
             ### Notes
             - All translations are generated automatically using DeepL
@@ -79,8 +69,5 @@ jobs:
             
             ---
             *This PR was created automatically by GitHub Actions*
-          labels: |
-            translation
-            arabic
-            automated
+          labels: translation,arabic,automated
           reviewers: bader1919
