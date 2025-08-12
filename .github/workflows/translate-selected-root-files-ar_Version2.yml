@@ -1,30 +1,150 @@
-name: Translate Files to Arabic
+name: Translate selected root files to Arabic (PR)
 
 on:
   workflow_dispatch:
   push:
     paths:
-      - "**/*.md"
+      - "README.md"
+      - "00 intro.md"
+      - "01 BY MB Consultancy - Home Page Content.md"
+      - "01A-Homepage -success-is-Jurney.md"
+      - "02 About Us Page Content.md"
+      - "03 Solution Page Content.md"
+      - "04 Online Store Page Content.md"
+      - "05 What Makes Us Unique Page.md"
+      - "06 Why Choose Us Page.md"
+      - "07 Contact Us Page Content.md"
+      - "08 Terms.md"
+      - "09 Privacy Policie.md"
+      - "i. Design Guidance.md"
+      - "ii. Customer Journey Analysis.md"
+      - "iii. General Information.md"
 
 jobs:
-  translate:
+  translate_and_pr:
     runs-on: ubuntu-latest
+    # GITHUB_TOKEN can stay read-only; we will use a PAT for the PR step.
     permissions:
       contents: write
       pull-requests: write
-    
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      - uses: actions/checkout@v4
 
-      - name: Translate files
-        uses: lyqht/deepl-translate-github-action@main
+      # Run the DeepL action once per file (sequentially) to generate outputs
+      - uses: lyqht/deepl-translate-github-action@v2.1.0
         with:
           target_languages: ar
-          input_file_path: docs/simple/original.md
-          output_file_name_pattern: docs/simple/{language}.md
+          input_file_path: "README.md"
+          output_file_name_pattern: "README.{language}.md"
           deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
 
+      - uses: lyqht/deepl-translate-github-action@v2.1.0
+        with:
+          target_languages: ar
+          input_file_path: "00 intro.md"
+          output_file_name_pattern: "00 intro.{language}.md"
+          deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
+
+      - uses: lyqht/deepl-translate-github-action@v2.1.0
+        with:
+          target_languages: ar
+          input_file_path: "01 BY MB Consultancy - Home Page Content.md"
+          output_file_name_pattern: "01 BY MB Consultancy - Home Page Content.{language}.md"
+          deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
+
+      - uses: lyqht/deepl-translate-github-action@v2.1.0
+        with:
+          target_languages: ar
+          input_file_path: "01A-Homepage -success-is-Jurney.md"
+          output_file_name_pattern: "01A-Homepage -success-is-Jurney.{language}.md"
+          deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
+
+      - uses: lyqht/deepl-translate-github-action@v2.1.0
+        with:
+          target_languages: ar
+          input_file_path: "02 About Us Page Content.md"
+          output_file_name_pattern: "02 About Us Page Content.{language}.md"
+          deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
+
+      - uses: lyqht/deepl-translate-github-action@v2.1.0
+        with:
+          target_languages: ar
+          input_file_path: "03 Solution Page Content.md"
+          output_file_name_pattern: "03 Solution Page Content.{language}.md"
+          deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
+
+      - uses: lyqht/deepl-translate-github-action@v2.1.0
+        with:
+          target_languages: ar
+          input_file_path: "04 Online Store Page Content.md"
+          output_file_name_pattern: "04 Online Store Page Content.{language}.md"
+          deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
+
+      - uses: lyqht/deepl-translate-github-action@v2.1.0
+        with:
+          target_languages: ar
+          input_file_path: "05 What Makes Us Unique Page.md"
+          output_file_name_pattern: "05 What Makes Us Unique Page.{language}.md"
+          deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
+
+      - uses: lyqht/deepl-translate-github-action@v2.1.0
+        with:
+          target_languages: ar
+          input_file_path: "06 Why Choose Us Page.md"
+          output_file_name_pattern: "06 Why Choose Us Page.{language}.md"
+          deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
+
+      - uses: lyqht/deepl-translate-github-action@v2.1.0
+        with:
+          target_languages: ar
+          input_file_path: "07 Contact Us Page Content.md"
+          output_file_name_pattern: "07 Contact Us Page Content.{language}.md"
+          deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
+
+      - uses: lyqht/deepl-translate-github-action@v2.1.0
+        with:
+          target_languages: ar
+          input_file_path: "08 Terms.md"
+          output_file_name_pattern: "08 Terms.{language}.md"
+          deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
+
+      - uses: lyqht/deepl-translate-github-action@v2.1.0
+        with:
+          target_languages: ar
+          input_file_path: "09 Privacy Policie.md"
+          output_file_name_pattern: "09 Privacy Policie.{language}.md"
+          deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
+
+      - uses: lyqht/deepl-translate-github-action@v2.1.0
+        with:
+          target_languages: ar
+          input_file_path: "i. Design Guidance.md"
+          output_file_name_pattern: "i. Design Guidance.{language}.md"
+          deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
+
+      - uses: lyqht/deepl-translate-github-action@v2.1.0
+        with:
+          target_languages: ar
+          input_file_path: "ii. Customer Journey Analysis.md"
+          output_file_name_pattern: "ii. Customer Journey Analysis.{language}.md"
+          deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
+
+      - uses: lyqht/deepl-translate-github-action@v2.1.0
+        with:
+          target_languages: ar
+          input_file_path: "iii. General Information.md"
+          output_file_name_pattern: "iii. General Information.{language}.md"
+          deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
+
+      # Create or update a PR with all generated files using a Personal Access Token
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GH_PAT }} # Your PAT secret
+          branch: translate/ar
+          title: "Add Arabic translations for selected files"
+          commit-message: "chore: add Arabic translations"
+          body: |
+            This PR adds Arabic translations generated by DeepL for selected root files.
+          labels: translation
 
