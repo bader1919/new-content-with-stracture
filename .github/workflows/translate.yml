@@ -1,19 +1,44 @@
+name: Translate Content
 
-name: Translate selected root files to Arabic (DeepL)
 on:
-  workflow_dispatch:
-  pull_request:
-    types: [opened, synchronize]
+  push:
+    branches: [ main ]
+  workflow_dispatch:  # Allow manual triggering
 
 jobs:
-  build:
+  translate:
     runs-on: ubuntu-latest
+    
     steps:
-      - name: DeepL Translate Github Action
-        uses: lyqht/deepl-translate-github-action@v2.0.0
-        with:
-          target_languages: ar
-          input_file_path: README.md
-          output_file_name_pattern: README.{language}.md
-          deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
-
+    - uses: actions/checkout@v3
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+        
+    - name: Cache dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+          
+    - name: Install dependencies
+      run: npm install deepl-node
+      
+    - name: Batch Translate Files
+      env:
+        DEEPL_API_KEY: ${{ secrets.DEEPL_API_KEY }}
+      run: |
+        # Add logic to batch process files and minimize API calls
+        node ./scripts/batch-translate.js
+        
+    - name: Commit and Push Changes
+      run: |
+        git config --global user.name 'GitHub Actions Bot'
+        git config --global user.email 'actions@github.com'
+        git add .
+        git commit -m "Automated translation update [skip ci]" || echo "No changes to commit"
+        git push
