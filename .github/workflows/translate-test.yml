@@ -1,0 +1,30 @@
+name: Test Translation (Small File)
+
+on:
+  workflow_dispatch:  # Allow manual triggering
+
+jobs:
+  translate-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      # Create translations directory if it doesn't exist
+      - name: Create translations directory
+        run: mkdir -p translations
+        
+      # Test with the smallest file first
+      - name: Test Translate Terms (1.7KB)
+        uses: lyqht/deepl-translate-github-action@v2
+        with:
+          target_languages: "ar"
+          input_file_path: "08 Terms.md"
+          output_file_name_prefix: "translations/08 Terms."
+          deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
+      
+      - name: Commit test translation
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'Add test Arabic translation for Terms file'
+          file_pattern: 'translations/*.ar.md'

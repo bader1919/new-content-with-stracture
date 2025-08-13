@@ -1,0 +1,79 @@
+name: Translate Large Files (Chunked)
+
+on:
+  workflow_dispatch:  # Allow manual triggering
+
+jobs:
+  translate-large:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      # Create translations directory
+      - name: Create translations directory
+        run: mkdir -p translations
+      
+      # Split large files into chunks
+      - name: Split large files into chunks
+        run: |
+          chmod +x .github/scripts/split-and-translate.py
+          echo "Splitting large files..."
+          python3 .github/scripts/split-and-translate.py "09 Privacy Policie.md"
+          python3 .github/scripts/split-and-translate.py "ii. Customer Journey Analysis.md"
+          python3 .github/scripts/split-and-translate.py "04 Online Store Page Content.md"
+          python3 .github/scripts/split-and-translate.py "05 What Makes Us Unique Page.md"
+          python3 .github/scripts/split-and-translate.py "iii. General Information.md"
+      
+      # Translate Privacy Policy chunks
+      - name: Translate Privacy Policy Chunk 1
+        uses: lyqht/deepl-translate-github-action@v2
+        with:
+          target_languages: "ar"
+          input_file_path: "09 Privacy Policie_chunk_1.md"
+          output_file_name_prefix: "translations/09 Privacy Policie_chunk_1."
+          deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
+      
+      - name: Translate Privacy Policy Chunk 2
+        uses: lyqht/deepl-translate-github-action@v2
+        with:
+          target_languages: "ar"
+          input_file_path: "09 Privacy Policie_chunk_2.md"
+          output_file_name_prefix: "translations/09 Privacy Policie_chunk_2."
+          deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
+      
+      # Translate Customer Journey Analysis chunks
+      - name: Translate Customer Journey Analysis Chunk 1
+        uses: lyqht/deepl-translate-github-action@v2
+        with:
+          target_languages: "ar"
+          input_file_path: "ii. Customer Journey Analysis_chunk_1.md"
+          output_file_name_prefix: "translations/ii. Customer Journey Analysis_chunk_1."
+          deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
+      
+      - name: Translate Customer Journey Analysis Chunk 2
+        uses: lyqht/deepl-translate-github-action@v2
+        with:
+          target_languages: "ar"
+          input_file_path: "ii. Customer Journey Analysis_chunk_2.md"
+          output_file_name_prefix: "translations/ii. Customer Journey Analysis_chunk_2."
+          deepl_api_key: ${{ secrets.DEEPL_API_KEY }}
+      
+      # Clean up chunk files
+      - name: Clean up chunk files
+        run: |
+          echo "Cleaning up temporary chunk files..."
+          rm -f *_chunk_*.md
+      
+      # Combine translated chunks (manual step for now - could be automated)
+      - name: Note about combining chunks
+        run: |
+          echo "Translation chunks have been created in translations/ directory"
+          echo "Manual combination of chunks may be needed for final files"
+          ls -la translations/
+      
+      - name: Commit translations
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'Add Arabic translations for large content files (chunked)'
+          file_pattern: 'translations/*.ar.md'
